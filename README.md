@@ -25,4 +25,4 @@ Simply add a `<div data-partials="path/to/partial/view"></div>` wherever you wan
 Yes, there are currently plans to support custom `partial` elements.
 
 ### Does v1.0.0 support request caching for multiple partials to the same view on the same page?
-No, at this time, there's no support for request caching. It's part of the plans for v2.0.0.
+No, at this time, there's no support for request caching.
