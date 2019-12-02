@@ -17,3 +17,12 @@ Add the following script tag to your HTML code for the current version (v1.0.0).
 
 ### Add your partial views
 Simply add a `<div data-partials="path/to/partial/view"></div>` wherever you want to load the view at `'path/to/partial/view'` as a partial view.
+
+
+## FAQs
+
+### Are there plans to support custom `<partial` elements?
+Yes, there are currently plans to support custom `partial` elements.
+
+### Does v1.0.0 support request caching for multiple partials to the same view on the same page?
+No, at this time, there's no support for request caching.
