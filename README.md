@@ -11,7 +11,7 @@ Add the following script tag to your HTML code for the current version (v1.1.1).
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/staa99/partials.js@1.1.1/partials.min.js"
-        integrity="sha512-xZNo6GsUWWT6MEeHXv7jzPKSikGHq27ihKSwfJ4OPUDmhR505cid89BMJMAyU91864IoVPtO7vo4DNPONdGGpQ=="
+        integrity="sha512-683oDThwMTYUMkEUhAhG2XmOqVhDa+O+ke59h6TZB3ov3MfCAlfZEtTWt+EFcwivUniYM6tr6GQxr3GvlMGzDg=="
         crossorigin="anonymous"></script>
 ```
 
