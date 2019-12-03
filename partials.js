@@ -57,6 +57,7 @@
             }
             else {
                 partial.parentNode.removeChild(partial);
+                detectPartials();
                 return headChildren.length;
             }
         }
