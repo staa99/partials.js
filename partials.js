@@ -3,10 +3,29 @@
     function detectPartials(document)
     {
         // use a partial tag
-        var partials = document.querySelectorAll("div[data-partial]");
+        var divPartials = document.querySelectorAll("div[data-partial]");
+        var tagPartials = document.getElementsByTagName("partial");
+
+        var partials = [];
+        var i;
+        for (i in divPartials)
+        {
+            if (divPartials.hasOwnProperty(i))
+            {
+                partials.push(divPartials[i]);
+            }
+        }
+
+        for (i in tagPartials)
+        {
+            if (tagPartials.hasOwnProperty(i))
+            {
+                partials.push(tagPartials[i]);
+            }
+        }
 
         // process the partials
-        for (var i in partials)
+        for (i in partials)
         {
             if (partials.hasOwnProperty(i))
             {
@@ -19,7 +38,13 @@
     function processPartial(partial)
     {
         // get the links
-        var link = partial.getAttribute("data-partial");
+        var tagName = partial.tagName.toLowerCase();
+        var link = tagName === "partial"
+            ? partial.getAttribute("href")
+            : tagName === "div"
+            ? partial.getAttribute("data-partial")
+                : null;
+
         if (link === null)
         {
             console.log("Skipping this partial because there's no link: " + partial);
@@ -62,12 +87,15 @@
 
         loadScripts(0);
 
-        function moveToNextOrStop(pos) {
-            if (++pos < headChildren.length) {
+        function moveToNextOrStop(pos)
+        {
+            if (++pos < headChildren.length)
+            {
                 loadScripts(pos);
                 return pos;
             }
-            else {
+            else
+            {
                 partial.parentNode.removeChild(partial);
                 return headChildren.length;
             }
@@ -88,7 +116,8 @@
                 }
 
                 var headElement = document.createElement(type);
-                for (var attr, i = 0, attrs = child.attributes, n = attrs.length; i < n; i++) {
+                for (var attr, i = 0, attrs = child.attributes, n = attrs.length; i < n; i++)
+                {
                     attr = attrs[i];
                     headElement.setAttribute(attr.nodeName, attr.nodeValue);
                 }
