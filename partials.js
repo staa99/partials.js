@@ -106,8 +106,8 @@
             if (headChildren.hasOwnProperty(pos))
             {
                 var child = headChildren[pos];
-                var type = child.tagName;
-                if (type.toLowerCase() !== "script" && type.toLowerCase() !== "link")
+                var type = child.tagName.toLowerCase();
+                if (type !== "script" && type !== "link")
                 {
                     if (moveToNextOrStop(pos) === headChildren.length)
                     {
