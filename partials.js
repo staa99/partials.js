@@ -37,13 +37,7 @@
 
     function processPartial(partial)
     {
-        // get the links
-        var tagName = partial.tagName.toLowerCase();
-        var link = tagName === "partial"
-            ? partial.getAttribute("href")
-            : tagName === "div"
-            ? partial.getAttribute("data-partial")
-                : null;
+        var link = getLink(partial);
 
         if (link === null)
         {
@@ -54,8 +48,63 @@
         loadUrl(link,
             function()
             {
-                loadUrlCallback(partial, this.response);
+                if (this.status >= 200 && this.status < 300)
+                {
+                    loadUrlCallback(partial, this.response);
+                }
+                else
+                {
+                    partial.parentNode.removeChild(partial);
+                }
             });
+    }
+
+    function getLink(partial)
+    {
+        // get the links
+        var tagName = partial.tagName.toLowerCase();
+        var link = tagName === "partial"
+            ? partial.getAttribute("href")
+            : tagName === "div"
+            ? partial.getAttribute("data-partial")
+                : null;
+
+        return resolveLink(partial, link);
+    }
+
+    function resolveLink(partial, link)
+    {
+        // exclude empty links
+        if (link === null || link === "" || link === undefined)
+        {
+            return null;
+        }
+
+        if (link[0] === "/" || link.match(/^\w+:\/\/.+/))
+        {
+            return link;
+        }
+
+        var path = partial.baseURI;
+        var start = path.indexOf("?");
+        if (start !== -1)
+        {
+            path = path.substr(0, start);
+        }
+
+        start = path.indexOf("#");
+        if (start !== -1)
+        {
+            path = path.substr(0, start);
+        }
+
+        if (path[path.length - 1] !== "/")
+        {
+            var schemeEnd = path.indexOf("://") + 3;
+            path = path.substring(0, path.substring(schemeEnd).lastIndexOf("/") + schemeEnd) + "/";
+        }
+
+        return path + link;
     }
 
     function loadUrlCallback(partial, response)
