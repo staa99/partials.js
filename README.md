@@ -18,7 +18,15 @@ Add the following script tag to your HTML code for the current version (v2.0.0).
 ```
 
 ### Add your partial views
-Simply add a `<div data-partials="path/to/partial/view"></div>` wherever you want to load the view at `'path/to/partial/view'` as a partial view.
+Simply add a 
+```html
+<partial href="path/to/partial/view" />
+```
+or
+```html
+<div data-partials="path/to/partial/view"></div>
+```
+wherever you want to load the view at `'path/to/partial/view'` as a partial view. You can use whichever you prefer.
 
 
 ## FAQs
