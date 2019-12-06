@@ -34,6 +34,9 @@ wherever you want to load the view at `'path/to/partial/view'` as a partial view
 ### Does it support `<partial>` elements?
 Yes, `partials.js` supports `<partial>` elements since v2.0.0.
 
+### Can `<div data-partial>` and `<partial>` tags be mixed?
+Yes, if you used the previous versions. You don't need to rewrite all your `<div data-partial>` tags to upgrade to version 2.
+
 ### Does v2.0.0 support request caching for multiple partials to the same view on the same page?
 No, at this time, there's no support for request caching.
 
