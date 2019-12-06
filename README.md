@@ -1,3 +1,5 @@
+[![](https://data.jsdelivr.com/v1/package/gh/staa99/partials.js/badge)](https://www.jsdelivr.com/package/gh/staa99/partials.js)
+
 # partials.js
 Support partial views in plain HTML with just one line of code
 
