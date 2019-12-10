@@ -1,5 +1,16 @@
 (function()
 {
+    var event = new Event("partials:loaded");
+
+    var count = 0;
+    function dispatchEvent()
+    {
+        if (--count === 0)
+        {
+            window.dispatchEvent(event);
+        }
+    }
+
     function detectPartials(document)
     {
         // use a partial tag
@@ -29,6 +40,7 @@
         {
             if (partials.hasOwnProperty(i))
             {
+                count++;
                 var partial = partials[i];
                 processPartial(partial);
             }
@@ -55,6 +67,7 @@
                 else
                 {
                     partial.parentNode.removeChild(partial);
+                    dispatchEvent();
                 }
             });
     }
@@ -132,6 +145,7 @@
         if (headChildren.length === 0)
         {
             partial.parentNode.removeChild(partial);
+            dispatchEvent();
         }
 
         loadScripts(0);
@@ -146,6 +160,7 @@
             else
             {
                 partial.parentNode.removeChild(partial);
+                dispatchEvent();
                 return headChildren.length;
             }
         }
